@@ -1,0 +1,44 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+
+/**
+ *
+ * @author User
+ */
+public class RentalSystemTest  {
+    public static void main(String[] args) {
+        Vehicle[] vehicles = new Vehicle[5];
+
+        vehicles[0] = new Car("Toyota", "Camry", 50, 4);
+        vehicles[1] = new Truck("Ford", "F-150", 100, 2.5);
+        vehicles[2] = new Motorcycle("Honda", "CBR500R", 30, true);
+        vehicles[3] = new ElectricCar("Tesla", "Model 3", 120, 75);
+        vehicles[4] = new Car("ErnestCar", "ErnestX", 55, 2);
+
+        int rentalDays = 5;
+        double discountPercent = 10;
+
+        for (Vehicle v : vehicles) {
+            System.out.println("=== Vehicle Details ===");
+            v.displayDetails();
+            System.out.println("Rental cost for " + rentalDays + " days: P" + v.calculateRentalCost(rentalDays));
+            System.out.println("Discounted rental cost (" + discountPercent + "% off): P" + v.calculateDiscountedRentalCost(rentalDays, discountPercent));
+            v.performMaintenance();
+
+            // If ElectricCar, call displayBatteryInfo
+            if (v instanceof ElectricCar electricCar) {
+                electricCar.displayBatteryInfo();
+            }
+
+            // If Motorcycle, optionally show helmet rental charge
+            if (v instanceof Motorcycle motorcycle) {
+                double helmetCharge = motorcycle.helmetRentalCharge(rentalDays);
+                System.out.println("Helmet rental charge for " + rentalDays + " days: P" + helmetCharge);
+            }
+
+            System.out.println();
+        }
+    }
+}
