@@ -1,0 +1,79 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author User
+ */
+public abstract class Vehicle {
+    private String make;
+    private String model;
+    private double rentalPrice;
+
+    public Vehicle(String make, String model, double rentalPrice) {
+        this.make = make;
+        this.model = model;
+        this.rentalPrice = rentalPrice;
+    }
+
+    public void displayDetails() {
+        System.out.println("Make: " + getMake());
+        System.out.println("Model: " + getModel());
+        System.out.println("Rental Price: $" + getRentalPrice() + " per day");
+    }
+
+    public double calculateRentalCost(int days) {
+        return getRentalPrice() * days;
+    }
+
+    public double calculateDiscountedRentalCost(int days, double discountPercentage) {
+        double total = calculateRentalCost(days);
+        return total - (total * (discountPercentage / 100));
+    }
+
+    public abstract void performMaintenance();
+
+    /**
+     * @return the make
+     */
+    public String getMake() {
+        return make;
+    }
+
+    /**
+     * @param make the make to set
+     */
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    /**
+     * @return the model
+     */
+    public String getModel() {
+        return model;
+    }
+
+    /**
+     * @param model the model to set
+     */
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    /**
+     * @return the rentalPrice
+     */
+    public double getRentalPrice() {
+        return rentalPrice;
+    }
+
+    /**
+     * @param rentalPrice the rentalPrice to set
+     */
+    public void setRentalPrice(double rentalPrice) {
+        this.rentalPrice = rentalPrice;
+    }
+}
