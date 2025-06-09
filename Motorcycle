@@ -1,0 +1,33 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author User
+ */
+public class Motorcycle extends Vehicle {
+    private boolean hasHelmetRental;
+
+    public Motorcycle(String make, String model, double rentalPrice, boolean hasHelmetRental) {
+        super(make, model, rentalPrice);
+        this.hasHelmetRental = hasHelmetRental;
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Helmet Rental Available: " + (hasHelmetRental ? "Yes" : "No"));
+    }
+
+    @Override
+    public void performMaintenance() {
+        System.out.println("Inspecting brakes and tire pressure for the motorcycle.");
+    }
+
+    // Optional method to calculate helmet rental charge
+    public double helmetRentalCharge(int days) {
+        return hasHelmetRental ? 5 * days : 0;  // e.g., $5 per day if helmet rental available
+    }
+}
